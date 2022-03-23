@@ -1,15 +1,17 @@
 import React from 'react';
-import './categories.styles.scss'
-import categories from './categories.json'
-import CategoryItem from './components/category-item/category-item';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from './routes/HomePage/HomePage';
+import Shop from './routes/Shop/Shop'
 
 function App() {
   return (
-    <div className='categories-container'>
-        {categories.map(({id, title, imageUrl}) => (
-          <CategoryItem category={{id, title, imageUrl}}/>
-        ))}
-    </div>
+    <>
+      <Routes>
+        <Route path={'/home'} element={<HomePage/>}>
+          <Route path={'shop'} element={<Shop/>}/>
+        </Route>
+      </Routes>
+    </>
   );
 }
 
